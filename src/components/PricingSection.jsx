@@ -6,6 +6,7 @@ import {
   ShieldCheck,
   Sparkles
 } from 'lucide-react';
+import { stickerLoveIt, stickerYeey } from '../assets/stickers';
 import { pricingPlans, companyInfo } from '../data/companyData';
 
 export default function PricingSection({ onOpenDemoModal }) {
@@ -77,21 +78,24 @@ export default function PricingSection({ onOpenDemoModal }) {
             return (
               <div
                 key={plan.id}
-                className={`relative rounded-3xl p-7 sm:p-8 transition-all flex flex-col justify-between ${
+                className={`relative rounded-3xl p-7 sm:p-8 transition-all flex flex-col justify-between overflow-hidden ${
                   plan.popular
-                    ? 'bg-slate-900 dark:bg-slate-950 text-white shadow-lg border border-teal-500/40 lg:-translate-y-2'
+                    ? 'bg-slate-900 dark:bg-slate-950 text-white shadow-xl border-2 border-teal-500/60 lg:-translate-y-2'
                     : 'bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 shadow-xs'
                 }`}
               >
-                {/* Popular Highlight */}
+                {/* Popular Highlight with Kula Love It */}
                 {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-teal-500 text-white text-[10px] font-semibold uppercase tracking-wider shadow-xs">
-                    Rekomendasi Utama
-                  </div>
+                  <>
+                    <img src={stickerLoveIt} alt="Paling Disukai" className="absolute -top-1 -right-1 w-16 h-16 object-contain" />
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-0.5 rounded-full bg-teal-500 text-white text-[10px] font-semibold uppercase tracking-wider shadow-xs">
+                      Rekomendasi Utama
+                    </div>
+                  </>
                 )}
 
                 <div className="space-y-6">
-                  <div>
+                  <div className={plan.popular ? 'pr-12' : ''}>
                     <span className={`text-[11px] font-semibold uppercase tracking-wider block ${plan.popular ? 'text-teal-400' : 'text-teal-700 dark:text-teal-400'}`}>
                       {plan.badge}
                     </span>
@@ -104,7 +108,7 @@ export default function PricingSection({ onOpenDemoModal }) {
                   </div>
 
                   {/* Price Block */}
-                  <div className={`py-4 border-y ${plan.popular ? 'border-slate-800' : 'border-slate-100 dark:border-slate-800'}`}>
+                  <div className={`py-4 border-y ${plan.popular ? 'border-slate-800' : 'border-slate-100 dark:border-slate-700'}`}>
                     <div className="flex items-baseline gap-1">
                       <span className={`text-3xl font-extrabold font-mono ${plan.popular ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
                         {formatPrice(price)}
@@ -143,12 +147,12 @@ export default function PricingSection({ onOpenDemoModal }) {
                 </div>
 
                 {/* Action Button */}
-                <div className={`pt-6 mt-6 border-t ${plan.popular ? 'border-slate-800' : 'border-slate-100 dark:border-slate-800'}`}>
+                <div className={`pt-6 mt-6 border-t ${plan.popular ? 'border-slate-800' : 'border-slate-100 dark:border-slate-700'}`}>
                   <button
                     onClick={() => handleSelectPlan(plan.name)}
                     className={`w-full py-3 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-2 ${
                       plan.popular
-                        ? 'bg-teal-500 hover:bg-teal-400 text-slate-950 shadow-xs'
+                        ? 'bg-teal-500 hover:bg-teal-400 text-slate-950 shadow-xs font-bold'
                         : 'bg-slate-900 hover:bg-teal-700 dark:bg-teal-600 dark:hover:bg-teal-500 text-white'
                     }`}
                   >

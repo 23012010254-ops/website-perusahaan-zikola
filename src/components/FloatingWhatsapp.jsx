@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MessageCircle, X, Sparkles } from 'lucide-react';
+import { stickerHai } from '../assets/stickers';
 import { companyInfo } from '../data/companyData';
 
 export default function FloatingWhatsapp() {
@@ -20,7 +21,7 @@ export default function FloatingWhatsapp() {
           </button>
           
           <div className="flex items-center gap-2 mb-1.5">
-            <img src="/logo.png" alt="Kula Mascot" className="w-6 h-6 object-contain" />
+            <img src={stickerHai} alt="Kula Mascot" className="w-7 h-7 object-contain" />
             <span className="font-bold text-teal-600 dark:text-teal-400">Tim MBG & Kula</span>
           </div>
           <p className="text-slate-600 dark:text-slate-300 text-[11px] leading-relaxed pr-2 font-normal">
@@ -38,8 +39,8 @@ export default function FloatingWhatsapp() {
         className="group relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-teal-600 p-1 text-white shadow-xl shadow-teal-600/30 hover:scale-105 active:scale-95 transition-all"
         aria-label="Chat WhatsApp Tim Zikola"
       >
-        <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center p-1.5 overflow-hidden">
-          <img src="/logo.png" alt="Kula" className="w-full h-full object-contain" />
+        <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center p-1 overflow-hidden">
+          <img src={stickerHai} alt="Kula" className="w-full h-full object-contain hover:scale-110 transition-transform" />
         </div>
         
         {/* WhatsApp Badge Indicator */}

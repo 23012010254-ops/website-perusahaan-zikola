@@ -5,6 +5,7 @@ import {
   PhoneCall,
   ArrowUpRight
 } from 'lucide-react';
+import { stickerHmmm } from '../assets/stickers';
 import { faqList, companyInfo } from '../data/companyData';
 
 export default function FaqSection() {
@@ -18,11 +19,11 @@ export default function FaqSection() {
     <section id="faq" className="py-20 lg:py-28 bg-white dark:bg-slate-900 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
+        {/* Section Header with Kula Thinking Sticker */}
         <div className="text-center space-y-4 mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/80 text-xs font-semibold text-teal-800 dark:text-teal-300 border border-teal-200/80 dark:border-teal-800">
-            <HelpCircle className="w-3.5 h-3.5" />
-            Tanya Jawab
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/80 text-xs font-semibold text-teal-800 dark:text-teal-300 border border-teal-200/80 dark:border-teal-800">
+            <img src={stickerHmmm} alt="Kula Tanya" className="w-5 h-5 object-contain" />
+            <span>Pusat Bantuan & FAQ</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
             Pertanyaan Umum Mengenai <br />
@@ -42,7 +43,7 @@ export default function FaqSection() {
             return (
               <div
                 key={index}
-                className="rounded-2xl bg-[#FAF9F6] dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 overflow-hidden transition-all"
+                className="rounded-2xl bg-[#FAF9F6] dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 overflow-hidden transition-all shadow-xs"
               >
                 <button
                   onClick={() => toggleAccordion(index)}
@@ -64,15 +65,18 @@ export default function FaqSection() {
           })}
         </div>
 
-        {/* Discreet Help Box */}
-        <div className="mt-12 p-6 rounded-2xl bento-card flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div>
-            <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-              Membutuhkan penjelasan mendalam untuk sekolah atau klinik Anda?
-            </h4>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              Tim riset dan konsultan kami siap berdiskusi secara daring maupun tatap muka.
-            </p>
+        {/* Discreet Help Box with Kula */}
+        <div className="mt-12 p-6 rounded-2xl bento-card flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left relative overflow-hidden">
+          <div className="flex items-center gap-4">
+            <img src={stickerHmmm} alt="Kula Bantuan" className="w-12 h-12 object-contain hidden sm:block shrink-0" />
+            <div>
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                Membutuhkan penjelasan mendalam untuk sekolah atau klinik Anda?
+              </h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                Tim riset dan konsultan kami siap berdiskusi secara daring maupun tatap muka.
+              </p>
+            </div>
           </div>
           <a
             href={`https://wa.me/${companyInfo.whatsapp}?text=Halo%20Zikola,%20saya%20ingin%20berkonsultasi%20mengenai%20platform%20asesmen.`}

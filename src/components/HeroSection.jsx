@@ -13,10 +13,25 @@ import {
   Zap,
   Play
 } from 'lucide-react';
+import { 
+  logoZikola, 
+  stickerHai, 
+  stickerKeren, 
+  stickerHebat, 
+  stickerLoveIt,
+  stickerYeey 
+} from '../assets/stickers';
 import { companyInfo } from '../data/companyData';
 
 export default function HeroSection({ onOpenDemoModal }) {
   const [activeTab, setActiveTab] = useState('kognitif');
+  const [selectedAnswer, setSelectedAnswer] = useState('B');
+  const [isAnswered, setIsAnswered] = useState(true);
+
+  const handleAnswer = (ans) => {
+    setSelectedAnswer(ans);
+    setIsAnswered(true);
+  };
 
   return (
     <section id="beranda" className="relative pt-28 pb-20 lg:pt-36 lg:pb-32 overflow-hidden bg-dot-pattern">
@@ -29,9 +44,9 @@ export default function HeroSection({ onOpenDemoModal }) {
         {/* Editorial Header Block */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
           
-          {/* Institutional Trust Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-xs">
-            <span className="flex h-2 w-2 rounded-full bg-teal-500"></span>
+          {/* Institutional Trust Badge with Playful Kula Mascot */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-xs hover:border-teal-500/40 transition-colors">
+            <img src={stickerHai} alt="Kula Menyapa" className="w-6 h-6 object-contain animate-bounce" />
             <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">
               Landasan Teori Psikologi Cattell-Horn-Carroll (CHC) & SEL
             </span>
@@ -91,8 +106,8 @@ export default function HeroSection({ onOpenDemoModal }) {
             {/* Studio Header Bar */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-slate-200/80 dark:border-slate-800 gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-teal-50 dark:bg-teal-950/80 border border-teal-200/80 dark:border-teal-800 p-1.5 flex items-center justify-center shrink-0">
-                  <img src="/logo.png" alt="Maskot Kula" className="w-full h-full object-contain" />
+                <div className="w-14 h-14 rounded-2xl bg-teal-50 dark:bg-teal-950/80 border border-teal-200/80 dark:border-teal-800 p-1.5 flex items-center justify-center shrink-0 shadow-xs">
+                  <img src={stickerHai} alt="Maskot Kula" className="w-full h-full object-contain hover:rotate-6 transition-transform" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
@@ -104,7 +119,7 @@ export default function HeroSection({ onOpenDemoModal }) {
                     </span>
                   </div>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
-                    Sesi Asesmen: Ananda Kenzo (Usia 6 Tahun 4 Bulan) • Bersama Maskot Kula
+                    Sesi Asesmen: Ananda Kenzo (Usia 6 Tahun 4 Bulan) • Bermain Bersama Kula
                   </p>
                 </div>
               </div>
@@ -132,7 +147,16 @@ export default function HeroSection({ onOpenDemoModal }) {
               
               {/* Left Column: Game & Stimulus Monitor (Col 1-7) */}
               <div className="lg:col-span-7 space-y-4">
-                <div className="p-5 rounded-2xl bg-slate-900 text-white relative overflow-hidden border border-slate-800">
+                <div className="p-5 rounded-2xl bg-slate-900 text-white relative overflow-hidden border border-slate-800 shadow-md">
+                  
+                  {/* Floating celebratory sticker on correct answer */}
+                  {selectedAnswer === 'B' && (
+                    <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-emerald-950/90 border border-emerald-500/50 px-2.5 py-1 rounded-xl text-[11px] font-bold text-emerald-300 animate-pop">
+                      <img src={stickerHebat} alt="Kula Hebat" className="w-5 h-5 object-contain" />
+                      <span>Keren! Jawaban Tepat</span>
+                    </div>
+                  )}
+
                   <div className="flex items-center justify-between text-xs text-slate-400 pb-3 border-b border-slate-800">
                     <span className="flex items-center gap-1.5 font-mono text-teal-400">
                       <Zap className="w-3.5 h-3.5" />
@@ -148,10 +172,41 @@ export default function HeroSection({ onOpenDemoModal }) {
                     <div className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white font-mono">
                       12 + 15 = ?
                     </div>
+                    
+                    {/* Interactive Clickable Answers */}
                     <div className="flex justify-center gap-3 pt-2">
-                      <span className="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 font-mono text-sm">A. 25</span>
-                      <span className="px-4 py-2 rounded-xl bg-teal-600/30 border border-teal-500 text-teal-200 font-mono text-sm font-bold ring-2 ring-teal-500/40">B. 27 ✓</span>
-                      <span className="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 font-mono text-sm">C. 29</span>
+                      <button 
+                        onClick={() => handleAnswer('A')}
+                        className={`px-4 py-2 rounded-xl border text-sm font-mono transition-all ${
+                          selectedAnswer === 'A' 
+                            ? 'bg-rose-900/60 border-rose-500 text-rose-200' 
+                            : 'bg-slate-800 hover:bg-slate-750 border-slate-700 text-slate-300'
+                        }`}
+                      >
+                        A. 25
+                      </button>
+                      
+                      <button 
+                        onClick={() => handleAnswer('B')}
+                        className={`px-4 py-2 rounded-xl border text-sm font-mono font-bold transition-all ${
+                          selectedAnswer === 'B' 
+                            ? 'bg-teal-600/40 border-teal-400 text-teal-200 ring-2 ring-teal-500/50 shadow-sm' 
+                            : 'bg-slate-800 hover:bg-slate-750 border-slate-700 text-slate-300'
+                        }`}
+                      >
+                        B. 27 ✓
+                      </button>
+
+                      <button 
+                        onClick={() => handleAnswer('C')}
+                        className={`px-4 py-2 rounded-xl border text-sm font-mono transition-all ${
+                          selectedAnswer === 'C' 
+                            ? 'bg-rose-900/60 border-rose-500 text-rose-200' 
+                            : 'bg-slate-800 hover:bg-slate-750 border-slate-700 text-slate-300'
+                        }`}
+                      >
+                        C. 29
+                      </button>
                     </div>
                   </div>
 
@@ -161,19 +216,19 @@ export default function HeroSection({ onOpenDemoModal }) {
                   </div>
                 </div>
 
-                {/* Sub metrics pill */}
+                {/* Sub metrics pill with Kula stickers */}
                 <div className="grid grid-cols-3 gap-3 text-center">
-                  <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700">
+                  <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 shadow-xs flex flex-col items-center">
                     <span className="text-[10px] uppercase font-semibold text-slate-500 dark:text-slate-400 block">Working Memory</span>
-                    <span className="text-sm font-bold text-slate-900 dark:text-white">Digit Span 7</span>
+                    <span className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">Digit Span 7</span>
                   </div>
-                  <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700">
+                  <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 shadow-xs flex flex-col items-center">
                     <span className="text-[10px] uppercase font-semibold text-slate-500 dark:text-slate-400 block">Visual Matching</span>
-                    <span className="text-sm font-bold text-teal-600 dark:text-teal-400">Skor 92/100</span>
+                    <span className="text-sm font-bold text-teal-600 dark:text-teal-400 mt-0.5">Skor 92/100</span>
                   </div>
-                  <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700">
+                  <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 shadow-xs flex flex-col items-center">
                     <span className="text-[10px] uppercase font-semibold text-slate-500 dark:text-slate-400 block">Status Emosi</span>
-                    <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">Tenang & Fokus</span>
+                    <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">Tenang & Fokus</span>
                   </div>
                 </div>
               </div>
@@ -224,13 +279,16 @@ export default function HeroSection({ onOpenDemoModal }) {
                     </div>
                   </div>
 
-                  {/* Doctor Recommendation Snippet */}
-                  <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 text-xs text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 leading-relaxed font-normal">
-                    <p className="font-semibold text-slate-900 dark:text-white mb-1 flex items-center gap-1.5">
-                      <Stethoscope className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
-                      Catatan dr. Rani Sp.A:
-                    </p>
-                    "Kemampuan penalaran logis abstrak di atas rata-rata usia 6 tahun. Sangat siap untuk stimulasi sains dan eksplorasi robotika."
+                  {/* Doctor Recommendation Snippet with Kula Love It Sticker */}
+                  <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 text-xs text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 leading-relaxed font-normal flex items-start gap-3">
+                    <img src={stickerLoveIt} alt="Kula Care" className="w-9 h-9 object-contain shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-slate-900 dark:text-white mb-0.5 flex items-center gap-1.5">
+                        <Stethoscope className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+                        Catatan dr. Rani Sp.A:
+                      </p>
+                      "Kemampuan penalaran logis abstrak di atas rata-rata usia 6 tahun. Sangat siap untuk stimulasi sains dan eksplorasi robotika."
+                    </div>
                   </div>
                 </div>
               </div>

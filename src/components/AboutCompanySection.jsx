@@ -13,6 +13,7 @@ import {
   Lock, 
   Award 
 } from 'lucide-react';
+import { logoZikola, stickerMantap } from '../assets/stickers';
 import { companyInfo } from '../data/companyData';
 
 export default function AboutCompanySection() {
@@ -51,8 +52,8 @@ export default function AboutCompanySection() {
           <div className="lg:col-span-7 bento-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               <div className="flex items-center gap-3.5">
-                <div className="w-12 h-12 rounded-xl bg-white dark:bg-slate-800 p-1.5 border border-slate-200 dark:border-slate-700 flex items-center justify-center shrink-0">
-                  <img src="/logo.png" alt="Zikola Logo" className="w-full h-full object-contain" />
+                <div className="w-12 h-12 rounded-xl bg-white dark:bg-slate-800 p-1.5 border border-slate-200 dark:border-slate-700 flex items-center justify-center shrink-0 shadow-xs">
+                  <img src={logoZikola} alt="Zikola Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white">
@@ -97,13 +98,14 @@ export default function AboutCompanySection() {
           <div className="lg:col-span-5 flex flex-col gap-5">
             
             {/* Vision */}
-            <div className="p-8 rounded-3xl bg-slate-900 text-white shadow-sm flex-1 space-y-3 border border-slate-800">
+            <div className="p-8 rounded-3xl bg-slate-900 text-white shadow-sm flex-1 space-y-3 border border-slate-800 relative overflow-hidden">
+              <img src={stickerMantap} alt="Kula Mantap" className="absolute -bottom-2 -right-2 w-20 h-20 object-contain opacity-80" />
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/10 text-xs font-semibold text-teal-300">
                 <Eye className="w-3.5 h-3.5" />
                 Visi Institusi
               </div>
               <h3 className="text-lg font-bold">Membuka Akses Evaluasi Tumbuh Kembang Berstandar Global untuk Setiap Anak</h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal pr-12">
                 Menciptakan ekosistem digital yang memungkinkan deteksi dini potensi dan kebutuhan stimulasi anak secara akurat di seluruh pelosok tanah air.
               </p>
             </div>

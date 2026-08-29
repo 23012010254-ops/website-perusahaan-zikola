@@ -6,8 +6,10 @@ import {
   Moon, 
   ArrowUpRight, 
   ShieldCheck, 
-  ChevronRight 
+  ChevronRight,
+  Sparkles
 } from 'lucide-react';
+import { logoZikola, stickerHai } from '../assets/stickers';
 import { companyInfo } from '../data/companyData';
 
 export default function Navbar({ darkMode, setDarkMode, onOpenDemoModal }) {
@@ -62,10 +64,10 @@ export default function Navbar({ darkMode, setDarkMode, onOpenDemoModal }) {
           
           {/* Brand Logo & Authority Label */}
           <a href="#beranda" className="flex items-center gap-3 group">
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-white dark:bg-slate-800 p-1 border border-slate-200/80 dark:border-slate-700/80 shadow-xs group-hover:scale-105 transition-transform">
+            <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-white dark:bg-slate-800 p-1 border border-slate-200/80 dark:border-slate-700/80 shadow-xs group-hover:scale-105 transition-transform">
               <img 
-                src="/logo.png" 
-                alt="Zikola Logo Mascot" 
+                src={logoZikola} 
+                alt="Zikola Logo" 
                 className="w-full h-full object-contain"
               />
             </div>

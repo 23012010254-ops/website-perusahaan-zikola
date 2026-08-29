@@ -11,6 +11,7 @@ import {
   MessageCircle 
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { logoZikola, stickerHai, stickerTerimakasih } from '../assets/stickers';
 import { companyInfo } from '../data/companyData';
 
 export default function ContactSection() {
@@ -64,11 +65,11 @@ export default function ContactSection() {
     <section id="kontak" className="py-20 lg:py-28 bg-slate-50/60 dark:bg-slate-900/40 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
+        {/* Section Header with Kula Greeting */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/80 text-xs font-bold text-teal-800 dark:text-teal-300 border border-teal-200 dark:border-teal-800">
-            <MessageCircle className="w-3.5 h-3.5" />
-            Hubungi Kami
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/80 text-xs font-bold text-teal-800 dark:text-teal-300 border border-teal-200 dark:border-teal-800">
+            <img src={stickerHai} alt="Kula Hai" className="w-5 h-5 object-contain" />
+            <span>Mari Berdiskusi Ramah</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
             Konsultasikan Kebutuhan Anda <br />
@@ -86,10 +87,10 @@ export default function ContactSection() {
           
           {/* Left Info Card */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
-            <div className="p-8 rounded-3xl bg-teal-600 text-white shadow-md space-y-6">
+            <div className="p-8 rounded-3xl bg-teal-600 text-white shadow-md space-y-6 relative overflow-hidden">
               <div className="flex items-center gap-3.5">
                 <div className="w-13 h-13 rounded-2xl bg-white p-1 flex items-center justify-center shadow-sm">
-                  <img src="/logo.png" alt="Zikola Logo" className="w-full h-full object-contain" />
+                  <img src={logoZikola} alt="Zikola Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">CV Maju Bersama Generasi</h3>
@@ -137,21 +138,24 @@ export default function ContactSection() {
               </div>
             </div>
 
-            {/* Quick WhatsApp Box */}
-            <div className="p-6 rounded-3xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 flex items-center justify-between">
-              <div>
-                <h4 className="text-sm font-bold text-emerald-900 dark:text-emerald-200">
-                  Respon Cepat via WhatsApp
-                </h4>
-                <p className="text-xs text-emerald-700 dark:text-emerald-400 mt-0.5 font-normal">
-                  Hubungi tim konsultan kami untuk info instan.
-                </p>
+            {/* Quick WhatsApp Box with Kula */}
+            <div className="p-6 rounded-3xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <img src={stickerHai} alt="Kula WA" className="w-11 h-11 object-contain shrink-0" />
+                <div>
+                  <h4 className="text-sm font-bold text-emerald-900 dark:text-emerald-200">
+                    Respon Cepat via WhatsApp
+                  </h4>
+                  <p className="text-xs text-emerald-700 dark:text-emerald-400 mt-0.5 font-normal">
+                    Tanyakan langsung ke konsultan kami.
+                  </p>
+                </div>
               </div>
               <a
                 href={`https://wa.me/${companyInfo.whatsapp}?text=Halo%20Zikola,%20saya%20mau%20konsultasi%20mengenai%20platform%20asesmen.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm"
+                className="px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm shrink-0 transition-transform hover:scale-105"
               >
                 Chat Sekarang
               </a>
@@ -162,14 +166,14 @@ export default function ContactSection() {
           <div className="lg:col-span-7 p-8 sm:p-10 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
             {submitted ? (
               <div className="py-12 text-center space-y-4">
-                <div className="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
-                  <CheckCircle2 className="w-8 h-8" />
+                <div className="w-20 h-20 rounded-full bg-emerald-50 dark:bg-emerald-950/80 p-2 mx-auto flex items-center justify-center">
+                  <img src={stickerTerimakasih} alt="Kula Terimakasih" className="w-full h-full object-contain" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
                   Pesan Terkirim dengan Baik
                 </h3>
                 <p className="text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed font-normal">
-                  Terima kasih. Tim Zikola sedang memproses pesan Anda dan akan menghubungi nomor WhatsApp Anda.
+                  Terima kasih banyak! Tim Zikola sedang membuka pesan Anda dan akan menghubungi nomor WhatsApp Anda.
                 </p>
                 <button
                   onClick={() => {

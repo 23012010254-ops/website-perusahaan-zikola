@@ -6,10 +6,11 @@ import {
   Phone, 
   MapPin, 
   Heart, 
-  Sparkles,
-  ArrowUp,
-  Brain
+  Sparkles, 
+  ArrowUp, 
+  Brain 
 } from 'lucide-react';
+import { logoZikola, stickerTerimakasih } from '../assets/stickers';
 import { companyInfo } from '../data/companyData';
 
 export default function Footer({ onOpenDemoModal }) {
@@ -31,8 +32,8 @@ export default function Footer({ onOpenDemoModal }) {
           {/* Brand & Mission */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-11 h-11 rounded-2xl bg-white/10 p-1 border border-teal-500/30">
-                <img src="/logo.png" alt="Zikola Logo Mascot" className="w-full h-full object-contain" />
+              <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-white/10 p-1 border border-teal-500/30">
+                <img src={logoZikola} alt="Zikola Logo Mascot" className="w-full h-full object-contain" />
               </div>
               <div>
                 <span className="text-2xl font-black text-white tracking-tight">Zikola</span>
@@ -85,11 +86,14 @@ export default function Footer({ onOpenDemoModal }) {
             </ul>
           </div>
 
-          {/* CTA & Actions */}
+          {/* CTA & Actions with Sticker */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300">
-              Mulai Asesmen
-            </h4>
+            <div className="flex items-center gap-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300">
+                Mulai Asesmen
+              </h4>
+              <img src={stickerTerimakasih} alt="Kula" className="w-5 h-5 object-contain" />
+            </div>
             <p className="text-xs text-slate-400 font-normal">
               Coba asesmen tumbuh kembang interaktif bersama Kula sekarang.
             </p>

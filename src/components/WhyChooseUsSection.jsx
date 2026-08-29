@@ -10,6 +10,7 @@ import {
   Cpu, 
   ArrowRight 
 } from 'lucide-react';
+import { stickerHebat, stickerKeren } from '../assets/stickers';
 
 export default function WhyChooseUsSection({ onOpenDemoModal }) {
   const chcConstructs = [
@@ -69,14 +70,14 @@ export default function WhyChooseUsSection({ onOpenDemoModal }) {
           {chcConstructs.map((item, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-2xl bg-[#FAF9F6] dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 shadow-xs flex flex-col justify-between space-y-4 hover:border-teal-500/50 transition-colors"
+              className="p-6 rounded-2xl bg-[#FAF9F6] dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 shadow-xs flex flex-col justify-between space-y-4 hover:border-teal-500/50 hover:shadow-md transition-all group"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300 border border-teal-200 dark:border-teal-800">
                     Konstruk {item.code}
                   </span>
-                  <Brain className="w-4 h-4 text-slate-400" />
+                  <Brain className="w-4 h-4 text-slate-400 group-hover:text-teal-500 transition-colors" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mt-1">
                   {item.name}
@@ -99,14 +100,18 @@ export default function WhyChooseUsSection({ onOpenDemoModal }) {
         </div>
 
         {/* Comparative Analysis: Conventional vs Zikola GBA */}
-        <div className="mt-16 bento-card rounded-3xl p-6 sm:p-10">
-          <div className="max-w-2xl mb-8">
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-              Mengapa Game-Based Assessment Menghasilkan Data Lebih Akurat?
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 font-normal">
-              Perbandingan objektif antara proses evaluasi psikologis konvensional dengan ekosistem digital Zikola.
-            </p>
+        <div className="mt-16 bento-card rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+          
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+            <div className="max-w-2xl">
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                Mengapa Game-Based Assessment Menghasilkan Data Lebih Akurat?
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 font-normal">
+                Perbandingan objektif antara proses evaluasi psikologis konvensional dengan ekosistem digital Zikola.
+              </p>
+            </div>
+            <img src={stickerHebat} alt="Kula Hebat" className="w-14 h-14 object-contain hidden sm:block shrink-0 animate-float" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

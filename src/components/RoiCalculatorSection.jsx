@@ -9,6 +9,7 @@ import {
   FileText,
   ArrowRight
 } from 'lucide-react';
+import { stickerMantap } from '../assets/stickers';
 import { companyInfo } from '../data/companyData';
 
 export default function RoiCalculatorSection() {
@@ -64,7 +65,7 @@ export default function RoiCalculatorSection() {
         </div>
 
         {/* Interactive Advisory Card */}
-        <div className="max-w-4xl mx-auto bento-card rounded-3xl overflow-hidden">
+        <div className="max-w-4xl mx-auto bento-card rounded-3xl overflow-hidden shadow-lg">
           <div className="grid grid-cols-1 md:grid-cols-12">
             
             {/* Left: Input Choices (Col 1-7) */}
@@ -125,8 +126,10 @@ export default function RoiCalculatorSection() {
             </div>
 
             {/* Right: Output Recommendation (Col 8-12) */}
-            <div className="md:col-span-5 p-6 sm:p-10 bg-slate-900 dark:bg-slate-950 text-white flex flex-col justify-between space-y-6 border-l border-slate-800">
+            <div className="md:col-span-5 p-6 sm:p-10 bg-slate-900 dark:bg-slate-950 text-white flex flex-col justify-between space-y-6 border-l border-slate-800 relative overflow-hidden">
               
+              <img src={stickerMantap} alt="Kula Rekomendasi" className="absolute -top-1 -right-1 w-16 h-16 object-contain opacity-90 animate-bounce" />
+
               <div className="space-y-4">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-teal-400">
                   Rekomendasi Paket

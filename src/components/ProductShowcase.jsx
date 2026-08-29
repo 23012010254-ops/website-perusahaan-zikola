@@ -17,6 +17,15 @@ import {
   ShieldCheck,
   FileText
 } from 'lucide-react';
+import { 
+  stickerHmmm, 
+  stickerHai, 
+  stickerKeren, 
+  stickerMantap, 
+  stickerLoveIt, 
+  stickerYeey,
+  stickerHebat 
+} from '../assets/stickers';
 import { productZikola } from '../data/companyData';
 
 export default function ProductShowcase({ onOpenDemoModal }) {
@@ -32,6 +41,15 @@ export default function ProductShowcase({ onOpenDemoModal }) {
     Users,
   };
 
+  const stickerModuleMap = [
+    stickerHmmm,     // Kognitif
+    stickerHai,      // Linguistik
+    stickerKeren,    // Minat Bakat
+    stickerMantap,   // Motorik
+    stickerLoveIt,   // Telekonsultasi
+    stickerYeey      // Parenting
+  ];
+
   const roleIconMap = {
     "HeartHandshake": HeartHandshake,
     "Gamepad2": Gamepad2,
@@ -39,10 +57,19 @@ export default function ProductShowcase({ onOpenDemoModal }) {
     "Building": Building,
   };
 
+  const roleStickerMap = [
+    stickerLoveIt,   // Ortu
+    stickerYeey,     // Anak
+    stickerMantap,   // Dokter
+    stickerHebat     // Sekolah
+  ];
+
   const activeModule = productZikola.modules[selectedModuleIndex];
   const activeRole = productZikola.userRoles[selectedRoleIndex];
   const ActiveModuleIcon = iconModuleMap[activeModule.icon] || Brain;
   const ActiveRoleIcon = roleIconMap[activeRole.icon] || Users;
+  const ActiveModuleSticker = stickerModuleMap[selectedModuleIndex] || stickerKeren;
+  const ActiveRoleSticker = roleStickerMap[selectedRoleIndex] || stickerHebat;
 
   return (
     <section id="produk-zikola" className="py-20 lg:py-28 bg-[#FAF9F6] dark:bg-[#0B0F19] relative">
@@ -71,18 +98,24 @@ export default function ProductShowcase({ onOpenDemoModal }) {
             {productZikola.modules.map((mod, idx) => {
               const IconComp = iconModuleMap[mod.icon] || Brain;
               const isSelected = selectedModuleIndex === idx;
+              const ModSticker = stickerModuleMap[idx];
               return (
                 <button
                   key={mod.id}
                   onClick={() => setSelectedModuleIndex(idx)}
-                  className={`p-3.5 rounded-2xl text-left transition-all duration-200 flex flex-col items-start gap-2 border ${
+                  className={`p-3.5 rounded-2xl text-left transition-all duration-200 flex flex-col items-start gap-2 border relative ${
                     isSelected
                       ? 'bg-white dark:bg-slate-800 border-teal-500/80 dark:border-teal-500 shadow-sm ring-1 ring-teal-500/30'
                       : 'bg-white/60 dark:bg-slate-900/60 border-slate-200/80 dark:border-slate-800 hover:bg-white dark:hover:bg-slate-800'
                   }`}
                 >
-                  <div className={`p-2 rounded-lg ${isSelected ? 'bg-teal-700 text-white dark:bg-teal-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'}`}>
-                    <IconComp className="w-4 h-4" />
+                  <div className="w-full flex items-center justify-between">
+                    <div className={`p-2 rounded-lg ${isSelected ? 'bg-teal-700 text-white dark:bg-teal-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'}`}>
+                      <IconComp className="w-4 h-4" />
+                    </div>
+                    {isSelected && (
+                      <img src={ModSticker} alt="Kula Badge" className="w-6 h-6 object-contain animate-bounce" />
+                    )}
                   </div>
                   <span className={`text-xs font-semibold leading-tight ${isSelected ? 'text-teal-900 dark:text-teal-200' : 'text-slate-700 dark:text-slate-300'}`}>
                     {mod.name}
@@ -118,7 +151,7 @@ export default function ProductShowcase({ onOpenDemoModal }) {
                     </span>
                     <div className="flex flex-wrap gap-2">
                       {activeModule.games.map((g, gIdx) => (
-                        <span key={gIdx} className="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 text-xs font-medium text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                        <span key={gIdx} className="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 text-xs font-medium text-slate-800 dark:text-slate-200 flex items-center gap-1.5 shadow-xs">
                           <span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
                           <span>{g}</span>
                         </span>
@@ -155,8 +188,12 @@ export default function ProductShowcase({ onOpenDemoModal }) {
 
               {/* Right Column: Live Clinical Telemetry Card */}
               <div className="lg:col-span-5">
-                <div className="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 shadow-xs space-y-4">
-                  <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-700">
+                <div className="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 shadow-xs space-y-4 relative overflow-hidden">
+                  
+                  {/* Mascot sticker decor */}
+                  <img src={ActiveModuleSticker} alt="Kula Mascot" className="absolute -top-1 -right-1 w-16 h-16 object-contain opacity-90 hover:scale-110 transition-transform" />
+
+                  <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-700 pr-12">
                     <div className="flex items-center gap-2">
                       <div className="w-7 h-7 rounded-lg bg-teal-50 dark:bg-teal-950 p-1 flex items-center justify-center">
                         <ActiveModuleIcon className="w-4 h-4 text-teal-700 dark:text-teal-300" />
@@ -165,9 +202,6 @@ export default function ProductShowcase({ onOpenDemoModal }) {
                         {activeModule.previewCard.title}
                       </span>
                     </div>
-                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-teal-50 dark:bg-teal-950 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800">
-                      Tervalidasi
-                    </span>
                   </div>
 
                   <div className="space-y-2.5 text-xs">
@@ -215,23 +249,23 @@ export default function ProductShowcase({ onOpenDemoModal }) {
                 <button
                   key={rIdx}
                   onClick={() => setSelectedRoleIndex(rIdx)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-2 ${
                     isSelected
                       ? 'bg-slate-900 text-white dark:bg-teal-600 dark:text-white shadow-xs'
                       : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
                   }`}
                 >
-                  {role.role}
+                  <span>{role.role}</span>
                 </button>
               );
             })}
           </div>
 
           {/* Active Role Presentation Card */}
-          <div className="max-w-4xl mx-auto bento-card rounded-3xl p-6 sm:p-10">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-200/80 dark:border-slate-800 pb-5">
+          <div className="max-w-4xl mx-auto bento-card rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-200/80 dark:border-slate-800 pb-5 pr-14">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/80 border border-teal-200/80 dark:border-teal-800 flex items-center justify-center text-teal-700 dark:text-teal-300">
+                <div className="w-11 h-11 rounded-xl bg-teal-50 dark:bg-teal-950/80 border border-teal-200/80 dark:border-teal-800 flex items-center justify-center text-teal-700 dark:text-teal-300">
                   <ActiveRoleIcon className="w-5 h-5" />
                 </div>
                 <div>
@@ -244,6 +278,8 @@ export default function ProductShowcase({ onOpenDemoModal }) {
                 </div>
               </div>
             </div>
+
+            <img src={ActiveRoleSticker} alt="Kula Role" className="absolute top-6 right-6 w-14 h-14 object-contain animate-float" />
 
             <p className="text-sm text-slate-600 dark:text-slate-300 mt-5 leading-relaxed font-normal">
               {activeRole.desc}

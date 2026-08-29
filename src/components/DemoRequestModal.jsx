@@ -8,6 +8,7 @@ import {
   ArrowRight 
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { logoZikola, stickerHai, stickerYeey } from '../assets/stickers';
 import { companyInfo } from '../data/companyData';
 
 export default function DemoRequestModal({ isOpen, onClose }) {
@@ -37,9 +38,9 @@ export default function DemoRequestModal({ isOpen, onClose }) {
 
     try {
       confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.6 },
+        particleCount: 100,
+        spread: 80,
+        origin: { y: 0.5 },
       });
     } catch {
       // ignore
@@ -77,21 +78,21 @@ export default function DemoRequestModal({ isOpen, onClose }) {
 
         {submitted ? (
           <div className="py-8 text-center space-y-4">
-            <div className="w-14 h-14 rounded-full bg-teal-50 dark:bg-teal-950/80 text-teal-600 dark:text-teal-400 border border-teal-200 dark:border-teal-800 flex items-center justify-center mx-auto">
-              <CheckCircle2 className="w-7 h-7" />
+            <div className="w-24 h-24 rounded-3xl bg-teal-50 dark:bg-teal-950/80 p-2 mx-auto flex items-center justify-center">
+              <img src={stickerYeey} alt="Kula Sukses" className="w-full h-full object-contain animate-bounce" />
             </div>
             <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-              Permohonan Terkirim
+              Hore! Permohonan Demo Diterima 🎉
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-sm mx-auto leading-relaxed font-normal">
-              Tim konsultan CV Maju Bersama Generasi sedang memproses data Anda dan akan segera menghubungi nomor WhatsApp Anda.
+              Kula dan tim konsultan CV Maju Bersama Generasi sedang memproses data Anda dan akan segera menghubungi nomor WhatsApp Anda.
             </p>
             <button
               onClick={() => {
                 setSubmitted(false);
                 onClose();
               }}
-              className="px-6 py-2.5 rounded-xl text-xs font-semibold bg-slate-900 hover:bg-teal-700 dark:bg-teal-600 dark:hover:bg-teal-500 text-white shadow-xs transition-transform"
+              className="px-6 py-2.5 rounded-xl text-xs font-semibold bg-slate-900 hover:bg-teal-700 dark:bg-teal-600 dark:hover:bg-teal-500 text-white shadow-xs transition-transform hover:scale-105"
             >
               Tutup Jendela
             </button>
@@ -100,8 +101,8 @@ export default function DemoRequestModal({ isOpen, onClose }) {
           <div>
             {/* Modal Header */}
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950 p-1 border border-teal-200 dark:border-teal-800 flex items-center justify-center shrink-0">
-                <img src="/logo.png" alt="Zikola Logo" className="w-full h-full object-contain" />
+              <div className="w-12 h-12 rounded-2xl bg-teal-50 dark:bg-teal-950 p-1.5 border border-teal-200 dark:border-teal-800 flex items-center justify-center shrink-0">
+                <img src={logoZikola} alt="Zikola Logo" className="w-full h-full object-contain" />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">
